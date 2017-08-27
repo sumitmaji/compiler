@@ -9,6 +9,7 @@ import org.apache.spark.api.java.JavaSparkContext;
 import org.apache.spark.api.java.function.Function;
 import org.apache.commons.lang3.StringUtils;
 
+import com.sum.context.SparkContext;
 import com.sum.spark.Executor;
 
 public class Map01 implements Executor {
@@ -17,7 +18,7 @@ public class Map01 implements Executor {
 
     @Override
     public void execute() {
-        JavaSparkContext sc = new JavaSparkContext(new SparkConf().setAppName("map01").setMaster("local"));
+        JavaSparkContext sc = SparkContext.getContext("map01");
         JavaRDD<Integer> rdd = sc.parallelize(Arrays.asList(1, 2, 3, 4, 5));
 
         JavaRDD<Integer> rdd1 = rdd.map(new Function<Integer, Integer>() {

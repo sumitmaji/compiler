@@ -1,7 +1,4 @@
 import org.apache.log4j.Logger;
-import org.apache.spark.api.java.JavaSparkContext;
-
-import com.sum.context.SparkContext;
 import com.sum.spark.Executor;
 import com.sum.sparkImpl.Map01;
 
