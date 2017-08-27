@@ -12,13 +12,16 @@ import org.apache.commons.lang3.StringUtils;
 import com.sum.context.SparkContext;
 import com.sum.spark.Executor;
 
-public class Map01 implements Executor {
+public class Map01 extends Executor {
 
     private static transient Logger log = Logger.getLogger(Map01.class);
 
+    public Map01(){
+        super("Map01");
+    }
+
     @Override
-    public void execute() {
-        JavaSparkContext sc = SparkContext.getContext("map01");
+    public void run() {
         JavaRDD<Integer> rdd = sc.parallelize(Arrays.asList(1, 2, 3, 4, 5));
 
         JavaRDD<Integer> rdd1 = rdd.map(new Function<Integer, Integer>() {
@@ -30,7 +33,5 @@ public class Map01 implements Executor {
 
         log.info("The data is: " + StringUtils.join(rdd1.collect(), ","));
         log.info(rdd1.collect());
-
     }
-
 }
