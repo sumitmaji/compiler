@@ -34,7 +34,7 @@ public class Fold01 extends Executor{
 class Marks implements Serializable{
     String subject;
     Integer marks;
-    Marks(String subject, Integer marks){
+    public Marks(String subject, Integer marks){
         this.subject = subject;
         this.marks = marks;
     }
